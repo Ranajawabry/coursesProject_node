@@ -14,7 +14,10 @@ export const  creatStudent = async(req,res,next)=>{
     return next(new Error('this student is alredy in this course'))
    }
    courses.push(courseId)
-   req.body.courses = courses
+   req.body.courses = courses;
+  
+   req.body.addedBy = req.user.id;
+   req.body.updatedBy = req.user.id;
 
     const student =await StudentModel.create(req.body);
    
@@ -23,9 +26,11 @@ export const  creatStudent = async(req,res,next)=>{
 }
 
 export const updateStudent = async(req,res,next)=>{
+    
     const {studentId} = req.params
     
-    
+    req.body.updatedBy = req.user.id;
+
      const updateStudent= await StudentModel.findOneAndUpdate({_id:studentId},req.body,{new:true})
 
      if(!updateStudent){

@@ -14,7 +14,7 @@ export async function sendEmail(email,subject,html,attachment) {
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
-    from: '"ecommerce" < process.env.Email>', // sender address
+    from: '"R-academy" < process.env.Email>', // sender address
     to: email, // list of receivers
     subject, // Subject line
     html , // html body

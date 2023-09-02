@@ -8,7 +8,13 @@ export const creatCourse = async(req,res,next)=>{
     if(checkCourse){
         return next(new Error("course already exist",{cause:400}))
     }
+
     req.body.sluge = slugify(Name);
+   
+    req.body.addeddBy = req.user.id;
+    req.body.updatedBy = req.user.id;
+
+
     const newCourse = await courseModel.create(req.body);
 
     return res.status(201).json({message:"success", newCourse})
@@ -29,7 +35,8 @@ export const updateCourse = async(req,res,next)=>{
         req.body.sluge= slugify(req.body.Name)
     }
 
-    
+    req.body.updatedBy = req.user.id;
+
     const updateCourse = await courseModel.findOneAndUpdate({_id: courseId},req.body,{new:true});
 
     if(!updateCourse){

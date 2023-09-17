@@ -6,7 +6,7 @@ const offerSchema = new Schema ({
         required:true,
         unique:true
     },
-    amount:{
+    discount:{
         type: Number,
         default:1,
 
@@ -34,5 +34,5 @@ const offerSchema = new Schema ({
     timestamps:true,
 
 })
-const offerModel = mongoose.models.Offer||  model('Coupon', offerSchema);
+const offerModel = mongoose.models.Offer||  model('Offer', offerSchema);
 export default offerModel;

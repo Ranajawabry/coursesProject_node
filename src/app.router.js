@@ -3,6 +3,7 @@ import AuthRouter from './modules/auth/auth.router.js'
 import userRouter from './modules/user/user.router.js'
 import courseRouter from './modules/course/course.router.js'
 import superviserRouter from './modules/superviser/superviser.router.js'
+import offerRouter from './modules/offer/offer.router.js'
 import { globalErrorHandel } from './services/errorHandling.js';
 import cors from 'cors' ;
 
@@ -25,6 +26,7 @@ const initApp = (express,app)=>{
     app.use('/user', userRouter)
     app.use('/course', courseRouter)
     app.use('/superviser', superviserRouter)
+    app.use('/offer', offerRouter)
 
 
     app.use('*',(req,res)=>{

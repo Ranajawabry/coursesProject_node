@@ -8,6 +8,7 @@ export const creatCourse = async(req,res,next)=>{
     if(checkCourse){
         return next(new Error("course already exist",{cause:400}))
     }
+    
 
     req.body.sluge = slugify(Name);
    

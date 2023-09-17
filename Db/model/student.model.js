@@ -10,6 +10,7 @@ const studentSchema = new Schema ({
     },
     email:{
         type:String,
+        unique:true,
         ref : 'User'
     },
     phone:{
